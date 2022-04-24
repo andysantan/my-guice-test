@@ -3,23 +3,23 @@ package my.example.gg;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import my.example.gg.modules.GuiceModule;
-import my.example.gg.steps.InitialSteps;
+import my.example.gg.steps.InitialRegistrationSteps;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class StepTest {
+public class CalculatorTest {
 
     @Test
-    public void testHelloWorld() {
+    public void testCalculator() {
         Injector injector = Guice.createInjector(new GuiceModule());
-        InitialSteps steps = injector.getInstance(InitialSteps.class);
+        InitialRegistrationSteps steps = injector.getInstance(InitialRegistrationSteps.class);
         assertNotNull(steps);
 
-        String hello = steps.getHelloWorld();
-        assertEquals(hello, "Hello World!!!");
+        int total = steps.add();
+        assertEquals(total, 2 + 3);
 
-        System.out.println(hello);
+        System.out.println(total);
     }
 }
